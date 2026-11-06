@@ -106,20 +106,18 @@ function startGame() {
   document.body.removeEventListener('touchstart', startGame);
   document.body.removeEventListener('keydown', startGame);
 
-  // Запуск дождя (тихо, фоном)
+  // Запуск дождя
   const rainSound = document.getElementById('rainSound');
   if (rainSound) {
-    rainSound.volume = 0.9;
-    rainSound.loop = true;
-    rainSound.play().catch(() => {});
+    rainSound.volume = 0.4; // Чуть тише, чтобы не перебивал музыку
+    rainSound.play().catch(e => console.log("Ошибка дождя:", e));
   }
 
   // Запуск музыки меню
   const menuMusic = document.getElementById('menuMusic');
   if (menuMusic) {
-    menuMusic.volume = 0.8;
-    menuMusic.currentTime = 0;
-    menuMusic.play().catch(() => {});
+    menuMusic.volume = 0.6;
+    menuMusic.play().catch(e => console.log("Ошибка музыки:", e));
   }
 
   // Небольшая пауза, потом меню
