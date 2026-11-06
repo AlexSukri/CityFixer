@@ -102,25 +102,32 @@ const loadTimer = setInterval(() => {
 function startGame() {
   if (!loaderStart.classList.contains('show')) return;
   loader.classList.add('hide');
+  
   document.body.removeEventListener('pointerdown', startGame);
   document.body.removeEventListener('touchstart', startGame);
   document.body.removeEventListener('keydown', startGame);
 
-  // Запуск дождя
+  // МОБИЛЬНАЯ РАЗБЛОКИРОВКА АУДИО
   const rainSound = document.getElementById('rainSound');
+  const menuMusic = document.getElementById('menuMusic');
+
+  // 1. Делаем звук беззвучным на долю секунды и запускаем (это обманывает телефон)
   if (rainSound) {
-    rainSound.volume = 0.4; // Чуть тише, чтобы не перебивал музыку
+    rainSound.volume = 0;
     rainSound.play().catch(e => console.log("Ошибка дождя:", e));
   }
-
-  // Запуск музыки меню
-  const menuMusic = document.getElementById('menuMusic');
   if (menuMusic) {
-    menuMusic.volume = 0.6;
+    menuMusic.volume = 0;
     menuMusic.play().catch(e => console.log("Ошибка музыки:", e));
   }
 
-  // Небольшая пауза, потом меню
+  // 2. Через 50 миллисекунд (когда телефон дал добро) возвращаем громкость
+  setTimeout(() => {
+    if (rainSound) rainSound.volume = 0.4;
+    if (menuMusic) menuMusic.volume = 0.6;
+  }, 50);
+
+  // 3. Небольшая пауза, потом запускаем меню
   setTimeout(() => {
     document.body.classList.add('ready');
     startMenu();
