@@ -107,27 +107,24 @@ function startGame() {
   document.body.removeEventListener('touchstart', startGame);
   document.body.removeEventListener('keydown', startGame);
 
-  // МОБИЛЬНАЯ РАЗБЛОКИРОВКА АУДИО
   const rainSound = document.getElementById('rainSound');
   const menuMusic = document.getElementById('menuMusic');
 
-  // 1. Делаем звук беззвучным на долю секунды и запускаем (это обманывает телефон)
+  // Разблокировка аудио для мобильных (играем беззвучно и сразу возвращаем громкость)
   if (rainSound) {
     rainSound.volume = 0;
-    rainSound.play().catch(e => console.log("Ошибка дождя:", e));
+    rainSound.play().catch(() => {});
   }
   if (menuMusic) {
     menuMusic.volume = 0;
-    menuMusic.play().catch(e => console.log("Ошибка музыки:", e));
+    menuMusic.play().catch(() => {});
   }
 
-  // 2. Через 50 миллисекунд (когда телефон дал добро) возвращаем громкость
   setTimeout(() => {
     if (rainSound) rainSound.volume = 0.4;
     if (menuMusic) menuMusic.volume = 0.6;
-  }, 50);
+  }, 100);
 
-  // 3. Небольшая пауза, потом запускаем меню
   setTimeout(() => {
     document.body.classList.add('ready');
     startMenu();
@@ -265,7 +262,7 @@ function choose() {
   playGlitch(0.4, 0.5);
   setTimeout(() => flash.classList.remove('on'), 400);
 
-  // плавное затухание музыки
+  // Плавное затухание музыки при выборе
   const menuMusic = document.getElementById('menuMusic');
   if (menuMusic && !menuMusic.paused) {
     let vol = menuMusic.volume;
