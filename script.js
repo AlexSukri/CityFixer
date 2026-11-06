@@ -110,20 +110,15 @@ function startGame() {
   const rainSound = document.getElementById('rainSound');
   const menuMusic = document.getElementById('menuMusic');
 
-  // Разблокировка аудио для мобильных (играем беззвучно и сразу возвращаем громкость)
+  // ПРЯМОЙ ЗАПУСК ЗВУКА
   if (rainSound) {
-    rainSound.volume = 0;
-    rainSound.play().catch(() => {});
+    rainSound.volume = 0.4;
+    rainSound.play().catch(e => console.log("Ошибка дождя:", e));
   }
   if (menuMusic) {
-    menuMusic.volume = 0;
-    menuMusic.play().catch(() => {});
+    menuMusic.volume = 0.6;
+    menuMusic.play().catch(e => console.log("Ошибка музыки:", e));
   }
-
-  setTimeout(() => {
-    if (rainSound) rainSound.volume = 0.4;
-    if (menuMusic) menuMusic.volume = 0.6;
-  }, 100);
 
   setTimeout(() => {
     document.body.classList.add('ready');
