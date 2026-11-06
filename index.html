@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CityFixer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CityFixer © AlexSukri, 2026. Все права защищены. -->
+
+    <!-- ЗАГРУЗКА -->
+<div id="loader">
+  <div class="loader-title">CITYFIXER</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+  <div class="loader-percent" id="loaderPercent">0%</div>
+  <div class="loader-line" id="loaderLine">Сканируем местность…</div>
+  <div class="loader-start" id="loaderStart">Нажмите, чтобы начать</div>
+</div>
+
+<div id="scene">
+  <div id="city"></div>
+  <div class="glow cyan"></div>
+  <div class="glow pink"></div>
+  <div id="rain"></div>
+  <div id="vignette"></div>
+
+  <div id="titles">
+    <div class="line1" data-text="CITYFIXER">CITYFIXER</div>
+    <div class="line2" data-text="2087 • НЕОНОВЫЙ РАЙОН">2087 • НЕОНОВЫЙ РАЙОН</div>
+  </div>
+
+  <div id="overlay">
+    <div id="sign-wrap">
+      <div id="sign">
+        <span class="letter city-letter l1">C</span>
+        <span class="letter city-letter l2">I</span>
+        <span class="letter city-letter l3">T</span>
+        <span class="letter city-letter l4">Y</span>
+        <span class="letter fixer-letter l5">F</span>
+        <span class="letter fixer-letter l6">I</span>
+        <span class="letter fixer-letter l7">X</span>
+        <span class="letter fixer-letter l8">E</span>
+        <span class="letter fixer-letter l9">R</span>
+      </div>
+    </div>
+
+    <div class="phrase-wrap">
+      <span class="dot" id="dot"></span>
+      <div class="phrase-lines" id="phraseLines">
+        <span class="pline" id="lineA" data-text=""></span>
+        <span class="pline" id="lineB" data-text=""></span>
+      </div>
+    </div>
+
+    <div class="choices" id="choices">
+      <div class="choice-block">
+        <button class="choice calm" id="btnCalm">Тихая жизнь</button>
+        <div class="tab-wrap tab-calm"><span>свободная игра</span></div>
+      </div>
+      <div class="choice-block">
+        <button class="choice legend" id="btnLegend">Смерть в лучах славы</button>
+        <div class="tab-wrap tab-legend"><span>сюжет</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flash" id="flash"></div>
+
+<audio id="rainSound" loop>
+  <source src="audio/rainMenu.mp3" type="audio/mpeg">
+</audio>
+<audio id="glitchSound" preload="auto">
+  <source src="audio/glyuk-sfx-046-sek.mp3" type="audio/mpeg">
+</audio>
+<audio id="typingSound" loop preload="auto">
+  <source src="audio/Terminal_Input.mp3" type="audio/mpeg">
+</audio>
+<audio id="menuMusic" loop preload="auto">
+  <source src="audio/CityFixerAudioMenu.mp3" type="audio/mpeg">
+</audio>
+<script src="script.js"></script>
+</body>
+</html>
